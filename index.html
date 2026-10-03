@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>KodeBot — the robotics code platform</title>
+<meta name="description" content="KodeBot — build, code and deploy robots. Coming soon.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🤖</text></svg>">
+<style>
+  :root { --bg:#0b0f14; --fg:#e6edf3; --muted:#8b949e; --accent:#2f81f7; --line:#1f2733; }
+  * { box-sizing:border-box; }
+  body { margin:0; background:var(--bg); color:var(--fg);
+         font:16px/1.6 ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif; }
+  main { max-width:720px; margin:0 auto; padding:80px 24px; }
+  h1 { font-size:2.6rem; margin:0 0 8px; letter-spacing:-.02em; }
+  .tag { color:var(--muted); font-size:1.15rem; margin:0 0 40px; }
+  .pill { display:inline-block; border:1px solid var(--line); border-radius:999px;
+          padding:4px 12px; font-size:.8rem; color:var(--muted); margin-bottom:24px; }
+  form { display:flex; gap:10px; flex-wrap:wrap; margin:24px 0 8px; }
+  input[type=email] { flex:1 1 240px; padding:12px 14px; border-radius:8px;
+                      border:1px solid var(--line); background:#0f151d; color:var(--fg); }
+  button { padding:12px 20px; border:0; border-radius:8px; background:var(--accent);
+           color:#fff; font-weight:600; cursor:pointer; }
+  button:hover { filter:brightness(1.1); }
+  .note { color:var(--muted); font-size:.85rem; }
+  hr { border:0; border-top:1px solid var(--line); margin:48px 0 24px; }
+  ul.links { list-style:none; padding:0; margin:0; display:flex; gap:18px; flex-wrap:wrap; }
+  a { color:var(--accent); text-decoration:none; }
+  a:hover { text-decoration:underline; }
+  footer { margin-top:56px; color:var(--muted); font-size:.85rem; }
+</style>
+</head>
+<body>
+<main>
+  <span class="pill">coming soon</span>
+  <h1>KodeBot</h1>
+  <p class="tag">The robotics code platform. Build, code and deploy robots.</p>
+
+  <form action="#" onsubmit="event.preventDefault(); this.reset(); alert('Thanks! We will email you when KodeBot launches.');">
+    <input type="email" name="email" placeholder="you@example.com" required>
+    <button type="submit">Join the waitlist</button>
+  </form>
+  <p class="note">No spam. One email when we launch.</p>
+
+  <hr>
+
+  <h2 style="font-size:1rem;">Find us</h2>
+  <ul class="links">
+    <li><a href="https://x.com/getkodebot">X / Twitter</a></li>
+    <li><a href="https://instagram.com/kodebotlabs">Instagram</a></li>
+    <li><a href="https://github.com/kodebotlabs">GitHub</a></li>
+    <li><a href="https://youtube.com/@kodebotlabs">YouTube</a></li>
+    <li><a href="mailto:kodebotlabs@gmail.com">Email</a></li>
+  </ul>
+
+  <footer>&copy; 2026 KodeBot. Built from scratch.</footer>
+</main>
+</body>
+</html>
