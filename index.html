@@ -4,56 +4,136 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>KodeBot — the robotics code platform</title>
-<meta name="description" content="KodeBot — build, code and deploy robots. Coming soon.">
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🤖</text></svg>">
+<meta name="description" content="Build, code and deploy robots. In the browser, against real sensors, on real hardware.">
+
+<!-- social preview -->
+<meta property="og:title" content="KodeBot — the robotics code platform">
+<meta property="og:description" content="Build, code and deploy robots.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://kodebotlabs.github.io/">
+<meta property="og:image" content="https://kodebotlabs.github.io/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="KodeBot — the robotics code platform">
+<meta name="twitter:description" content="Build, code and deploy robots.">
+<meta name="twitter:image" content="https://kodebotlabs.github.io/og.png">
+
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="export-avatar-128.png">
+
 <style>
-  :root { --bg:#0b0f14; --fg:#e6edf3; --muted:#8b949e; --accent:#2f81f7; --line:#1f2733; }
+  :root {
+    --void:#0B0F14; --deep:#080B10; --surface:#151B23; --line:#1F2733;
+    --volt:#4C9AFF; --sky:#79C0FF; --text:#E6EDF3; --muted:#8B949E;
+    --mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    --sans: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  }
   * { box-sizing:border-box; }
-  body { margin:0; background:var(--bg); color:var(--fg);
-         font:16px/1.6 ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif; }
-  main { max-width:720px; margin:0 auto; padding:80px 24px; }
-  h1 { font-size:2.6rem; margin:0 0 8px; letter-spacing:-.02em; }
-  .tag { color:var(--muted); font-size:1.15rem; margin:0 0 40px; }
+  html { scroll-behavior:smooth; }
+  body { margin:0; background:var(--void); color:var(--text);
+         font:16px/1.65 var(--sans); -webkit-font-smoothing:antialiased; }
+  main { max-width:760px; margin:0 auto; padding:88px 24px 64px; }
+
+  header { display:flex; align-items:center; gap:16px; margin-bottom:44px; }
+  header svg { flex:none; }
+  .word { font-family:var(--mono); font-size:1.5rem; font-weight:700; letter-spacing:-.5px; }
+  .word b { color:var(--volt); font-weight:700; }
+
   .pill { display:inline-block; border:1px solid var(--line); border-radius:999px;
-          padding:4px 12px; font-size:.8rem; color:var(--muted); margin-bottom:24px; }
-  form { display:flex; gap:10px; flex-wrap:wrap; margin:24px 0 8px; }
-  input[type=email] { flex:1 1 240px; padding:12px 14px; border-radius:8px;
-                      border:1px solid var(--line); background:#0f151d; color:var(--fg); }
-  button { padding:12px 20px; border:0; border-radius:8px; background:var(--accent);
-           color:#fff; font-weight:600; cursor:pointer; }
-  button:hover { filter:brightness(1.1); }
+          padding:4px 12px; font-size:.78rem; color:var(--muted); margin-bottom:22px; }
+  .pill::before { content:''; display:inline-block; width:6px; height:6px; border-radius:50%;
+                  background:var(--volt); margin-right:7px; vertical-align:middle; }
+
+  h1 { font-size:clamp(2.1rem,6vw,3.1rem); line-height:1.12; letter-spacing:-.02em;
+       margin:0 0 16px; }
+  h1 .accent { color:var(--volt); }
+  .lede { color:var(--muted); font-size:1.15rem; max-width:56ch; margin:0 0 36px; }
+
+  form { display:flex; gap:10px; flex-wrap:wrap; margin:0 0 8px; }
+  input[type=email] { flex:1 1 250px; padding:13px 15px; border-radius:9px;
+                      border:1px solid var(--line); background:var(--surface);
+                      color:var(--text); font:inherit; }
+  input[type=email]:focus { outline:2px solid var(--volt); outline-offset:1px; border-color:transparent; }
+  button { padding:13px 22px; border:0; border-radius:9px; background:var(--volt);
+           color:var(--deep); font:600 1rem var(--sans); cursor:pointer; }
+  button:hover { background:var(--sky); }
   .note { color:var(--muted); font-size:.85rem; }
-  hr { border:0; border-top:1px solid var(--line); margin:48px 0 24px; }
-  ul.links { list-style:none; padding:0; margin:0; display:flex; gap:18px; flex-wrap:wrap; }
-  a { color:var(--accent); text-decoration:none; }
-  a:hover { text-decoration:underline; }
-  footer { margin-top:56px; color:var(--muted); font-size:.85rem; }
+
+  .cards { display:grid; gap:14px; grid-template-columns:repeat(auto-fit,minmax(210px,1fr));
+           margin:44px 0 0; }
+  .card { background:var(--surface); border:1px solid var(--line);
+          border-radius:11px; padding:18px 20px; }
+  .card h3 { margin:0 0 6px; font-size:.95rem; font-family:var(--mono); color:var(--sky); }
+  .card p { margin:0; color:var(--muted); font-size:.9rem; }
+
+  hr { border:0; border-top:1px solid var(--line); margin:52px 0 26px; }
+  h2 { font-size:1rem; margin:0 0 14px; }
+  ul.links { list-style:none; padding:0; margin:0; display:flex; gap:10px; flex-wrap:wrap; }
+  ul.links a { display:inline-block; border:1px solid var(--line); border-radius:8px;
+               padding:8px 14px; color:var(--muted); text-decoration:none; font-size:.9rem; }
+  ul.links a:hover { border-color:var(--volt); color:var(--volt); }
+  a { color:var(--volt); }
+  footer { margin-top:56px; color:var(--muted); font-size:.85rem;
+           display:flex; gap:12px; flex-wrap:wrap; }
+  footer code { font-family:var(--mono); color:var(--sky); }
 </style>
 </head>
 <body>
 <main>
+  <header>
+    <svg width="46" height="46" viewBox="0 0 64 64" aria-hidden="true">
+      <path d="M32 14v-4" stroke="#4C9AFF" stroke-width="2.5" stroke-linecap="round"/>
+      <circle cx="32" cy="8.5" r="3" fill="#4C9AFF"/>
+      <rect x="14" y="16" width="36" height="30" rx="9" fill="none" stroke="#4C9AFF" stroke-width="2.5"/>
+      <rect x="10.5" y="26" width="3" height="9" rx="1.5" fill="#2F81F7"/>
+      <rect x="50.5" y="26" width="3" height="9" rx="1.5" fill="#2F81F7"/>
+      <circle cx="24" cy="28.5" r="3.2" fill="#79C0FF"/>
+      <circle cx="40" cy="28.5" r="3.2" fill="#79C0FF"/>
+      <path d="M25 37c1.8 2.2 4 3.2 7 3.2s5.2-1 7-3.2" fill="none" stroke="#79C0FF" stroke-width="2.2" stroke-linecap="round"/>
+    </svg>
+    <span class="word">Kode<b>Bot</b></span>
+  </header>
+
   <span class="pill">coming soon</span>
-  <h1>KodeBot</h1>
-  <p class="tag">The robotics code platform. Build, code and deploy robots.</p>
+  <h1>Build, code and deploy <span class="accent">robots.</span></h1>
+  <p class="lede">In the browser. Against real sensors. On real hardware. No local setup, no dependency tangle, no guesswork.</p>
 
   <form action="#" onsubmit="event.preventDefault(); this.reset(); alert('Thanks! We will email you when KodeBot launches.');">
-    <input type="email" name="email" placeholder="you@example.com" required>
+    <input type="email" name="email" placeholder="you@example.com" required aria-label="Email address">
     <button type="submit">Join the waitlist</button>
   </form>
   <p class="note">No spam. One email when we launch.</p>
 
+  <div class="cards">
+    <div class="card">
+      <h3>Browser-based</h3>
+      <p>Write and debug robot code with nothing to install locally.</p>
+    </div>
+    <div class="card">
+      <h3>Real sensors</h3>
+      <p>Test against actual sensor data, not just simulated guesses.</p>
+    </div>
+    <div class="card">
+      <h3>Real hardware</h3>
+      <p>Deploy straight to the robot when it behaves the way you expect.</p>
+    </div>
+  </div>
+
   <hr>
 
-  <h2 style="font-size:1rem;">Find us</h2>
+  <h2>Find us</h2>
   <ul class="links">
     <li><a href="https://x.com/kodebotlabs">X / Twitter</a></li>
+    <li><a href="https://bsky.app/profile/kodebotlabs.bsky.social">Bluesky</a></li>
     <li><a href="https://instagram.com/kodebotlabs">Instagram</a></li>
     <li><a href="https://github.com/kodebotlabs">GitHub</a></li>
     <li><a href="https://youtube.com/@kodebotlabs">YouTube</a></li>
     <li><a href="mailto:kodebotlabs@gmail.com">Email</a></li>
   </ul>
 
-  <footer>&copy; 2026 KodeBot. Built from scratch.</footer>
+  <footer>
+    <span>&copy; 2026 KodeBot</span>
+    <span><code>automaton</code> &middot; <code>telemetry</code> &middot; <code>actuator</code> &middot; <code>kinematics</code></span>
+  </footer>
 </main>
 </body>
 </html>
