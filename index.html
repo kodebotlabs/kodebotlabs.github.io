@@ -3,66 +3,67 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>KodeBot — the robotics code platform</title>
-<meta name="description" content="Build, code and deploy robots. In the browser, against real sensors, on real hardware.">
+<title>KodeBot — Build. Code. Create.</title>
+<meta name="description" content="The robotics code platform. Build, code and deploy robots from the browser.">
 
-<!-- social preview -->
-<meta property="og:title" content="KodeBot — the robotics code platform">
-<meta property="og:description" content="Build, code and deploy robots.">
+<meta property="og:title" content="KodeBot — Build. Code. Create.">
+<meta property="og:description" content="The robotics code platform.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://kodebotlabs.github.io/">
 <meta property="og:image" content="https://kodebotlabs.github.io/og.png">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="KodeBot — the robotics code platform">
-<meta name="twitter:description" content="Build, code and deploy robots.">
+<meta name="twitter:title" content="KodeBot — Build. Code. Create.">
+<meta name="twitter:description" content="The robotics code platform.">
 <meta name="twitter:image" content="https://kodebotlabs.github.io/og.png">
 
-<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="icon" href="favicon-32.png" sizes="32x32" type="image/png">
+<link rel="icon" href="favicon-64.png" sizes="64x64" type="image/png">
 <link rel="apple-touch-icon" href="export-avatar-128.png">
 
 <style>
   :root {
     --void:#0B0F14; --deep:#080B10; --surface:#151B23; --line:#1F2733;
-    --volt:#4C9AFF; --sky:#79C0FF; --text:#E6EDF3; --muted:#8B949E;
+    --blue:#1DA4EB; --teal:#3ACAA1; --green:#5DBF73; --lime:#CBE141;
+    --text:#E6EDF3; --muted:#8B949E;
     --mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
     --sans: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    --grad: linear-gradient(100deg, var(--blue) 0%, var(--teal) 45%, var(--green) 75%, var(--lime) 100%);
   }
   * { box-sizing:border-box; }
-  html { scroll-behavior:smooth; }
   body { margin:0; background:var(--void); color:var(--text);
          font:16px/1.65 var(--sans); -webkit-font-smoothing:antialiased; }
-  main { max-width:760px; margin:0 auto; padding:88px 24px 64px; }
+  main { max-width:760px; margin:0 auto; padding:80px 24px 64px; }
 
-  header { display:flex; align-items:center; gap:16px; margin-bottom:44px; }
-  header svg { flex:none; }
+  header { display:flex; align-items:center; gap:15px; margin-bottom:46px; }
+  header img { flex:none; border-radius:11px; }
   .word { font-family:var(--mono); font-size:1.5rem; font-weight:700; letter-spacing:-.5px; }
-  .word b { color:var(--volt); font-weight:700; }
 
   .pill { display:inline-block; border:1px solid var(--line); border-radius:999px;
-          padding:4px 12px; font-size:.78rem; color:var(--muted); margin-bottom:22px; }
+          padding:4px 12px; font-size:.78rem; color:var(--muted); margin-bottom:24px; }
   .pill::before { content:''; display:inline-block; width:6px; height:6px; border-radius:50%;
-                  background:var(--volt); margin-right:7px; vertical-align:middle; }
+                  margin-right:7px; vertical-align:middle; background:var(--teal); }
 
-  h1 { font-size:clamp(2.1rem,6vw,3.1rem); line-height:1.12; letter-spacing:-.02em;
-       margin:0 0 16px; }
-  h1 .accent { color:var(--volt); }
-  .lede { color:var(--muted); font-size:1.15rem; max-width:56ch; margin:0 0 36px; }
+  h1 { font-size:clamp(2.3rem,7.5vw,3.6rem); line-height:1.08; letter-spacing:-.025em;
+       margin:0 0 18px; font-weight:800; }
+  h1 .g { background:var(--grad); -webkit-background-clip:text; background-clip:text;
+          -webkit-text-fill-color:transparent; color:transparent; }
+  .lede { color:var(--muted); font-size:1.15rem; max-width:54ch; margin:0 0 36px; }
 
   form { display:flex; gap:10px; flex-wrap:wrap; margin:0 0 8px; }
   input[type=email] { flex:1 1 250px; padding:13px 15px; border-radius:9px;
                       border:1px solid var(--line); background:var(--surface);
                       color:var(--text); font:inherit; }
-  input[type=email]:focus { outline:2px solid var(--volt); outline-offset:1px; border-color:transparent; }
-  button { padding:13px 22px; border:0; border-radius:9px; background:var(--volt);
-           color:var(--deep); font:600 1rem var(--sans); cursor:pointer; }
-  button:hover { background:var(--sky); }
+  input[type=email]:focus { outline:2px solid var(--teal); outline-offset:1px; border-color:transparent; }
+  button { padding:13px 22px; border:0; border-radius:9px; background:var(--grad);
+           color:#08110C; font:700 1rem var(--sans); cursor:pointer; }
+  button:hover { filter:brightness(1.12); }
   .note { color:var(--muted); font-size:.85rem; }
 
   .cards { display:grid; gap:14px; grid-template-columns:repeat(auto-fit,minmax(210px,1fr));
            margin:44px 0 0; }
   .card { background:var(--surface); border:1px solid var(--line);
           border-radius:11px; padding:18px 20px; }
-  .card h3 { margin:0 0 6px; font-size:.95rem; font-family:var(--mono); color:var(--sky); }
+  .card h3 { margin:0 0 6px; font-family:var(--mono); font-size:.95rem; color:var(--teal); }
   .card p { margin:0; color:var(--muted); font-size:.9rem; }
 
   hr { border:0; border-top:1px solid var(--line); margin:52px 0 26px; }
@@ -70,32 +71,22 @@
   ul.links { list-style:none; padding:0; margin:0; display:flex; gap:10px; flex-wrap:wrap; }
   ul.links a { display:inline-block; border:1px solid var(--line); border-radius:8px;
                padding:8px 14px; color:var(--muted); text-decoration:none; font-size:.9rem; }
-  ul.links a:hover { border-color:var(--volt); color:var(--volt); }
-  a { color:var(--volt); }
-  footer { margin-top:56px; color:var(--muted); font-size:.85rem;
-           display:flex; gap:12px; flex-wrap:wrap; }
-  footer code { font-family:var(--mono); color:var(--sky); }
+  ul.links a:hover { border-color:var(--teal); color:var(--teal); }
+  a { color:var(--teal); }
+  footer { margin-top:56px; color:var(--muted); font-size:.85rem; }
+  footer code { font-family:var(--mono); color:var(--green); }
 </style>
 </head>
 <body>
 <main>
   <header>
-    <svg width="46" height="46" viewBox="0 0 64 64" aria-hidden="true">
-      <path d="M32 14v-4" stroke="#4C9AFF" stroke-width="2.5" stroke-linecap="round"/>
-      <circle cx="32" cy="8.5" r="3" fill="#4C9AFF"/>
-      <rect x="14" y="16" width="36" height="30" rx="9" fill="none" stroke="#4C9AFF" stroke-width="2.5"/>
-      <rect x="10.5" y="26" width="3" height="9" rx="1.5" fill="#2F81F7"/>
-      <rect x="50.5" y="26" width="3" height="9" rx="1.5" fill="#2F81F7"/>
-      <circle cx="24" cy="28.5" r="3.2" fill="#79C0FF"/>
-      <circle cx="40" cy="28.5" r="3.2" fill="#79C0FF"/>
-      <path d="M25 37c1.8 2.2 4 3.2 7 3.2s5.2-1 7-3.2" fill="none" stroke="#79C0FF" stroke-width="2.2" stroke-linecap="round"/>
-    </svg>
-    <span class="word">Kode<b>Bot</b></span>
+    <img src="export-avatar-64.png" width="46" height="46" alt="KodeBot logo">
+    <span class="word">KodeBot</span>
   </header>
 
   <span class="pill">coming soon</span>
-  <h1>Build, code and deploy <span class="accent">robots.</span></h1>
-  <p class="lede">In the browser. Against real sensors. On real hardware. No local setup, no dependency tangle, no guesswork.</p>
+  <h1><span class="g">Build. Code. Create.</span></h1>
+  <p class="lede">The robotics code platform. Write robot code in the browser, test it against real sensors, and deploy it to real hardware.</p>
 
   <form action="#" onsubmit="event.preventDefault(); this.reset(); alert('Thanks! We will email you when KodeBot launches.');">
     <input type="email" name="email" placeholder="you@example.com" required aria-label="Email address">
@@ -105,16 +96,16 @@
 
   <div class="cards">
     <div class="card">
-      <h3>Browser-based</h3>
-      <p>Write and debug robot code with nothing to install locally.</p>
+      <h3>Build</h3>
+      <p>Compose robot programs visually, with real hardware constraints in view.</p>
     </div>
     <div class="card">
-      <h3>Real sensors</h3>
-      <p>Test against actual sensor data, not just simulated guesses.</p>
+      <h3>Code</h3>
+      <p>Drop into the code when you need it. Nothing to install, nothing to break.</p>
     </div>
     <div class="card">
-      <h3>Real hardware</h3>
-      <p>Deploy straight to the robot when it behaves the way you expect.</p>
+      <h3>Create</h3>
+      <p>Ship it to the robot and watch it do the thing you built it for.</p>
     </div>
   </div>
 
@@ -131,8 +122,7 @@
   </ul>
 
   <footer>
-    <span>&copy; 2026 KodeBot</span>
-    <span><code>automaton</code> &middot; <code>telemetry</code> &middot; <code>actuator</code> &middot; <code>kinematics</code></span>
+    <code>automaton</code> &middot; <code>telemetry</code> &middot; <code>actuator</code> &middot; <code>kinematics</code>
   </footer>
 </main>
 </body>
